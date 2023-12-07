@@ -2,12 +2,22 @@
 
 This is a simple schematic used to add secondary entrypoints to a library.
 
+It creates both `index.ts` and `ng-package.json` at the right place, to have material-like imports for your library.
+
 ```bash
-npx ng generate @mgx/nuidity:entrypoint your_feature_name -p your_project
+npx ng generate @mgx/nuidity:entrypoint
+npx ng generate @mgx/nuidity:entrypoint NAME -p PROJECT
+npx ng generate @mgx/nuidity:entrypoint -n NAME -p PROJECT
 ```
 
-This will create the required `ng-package.json` alongside its dedicated `index.ts` file.
+## Caveats :
 
-If the project name is not provided, and you have a single library in your projects, the schematics will use this library by default.
-
-_(Note that having more or less than 1 library requires you to provide the project name)_
+- If you have a single library project, you can omit the `project` argument
+  - _If you have none, or more than one, an error will occur when omitting it_
+- If files already exists, an error will occur
+- It only works if you have an `angular.json` file at the root of your project (suck it, Nx)
+- It only works for `"projectType": "library"`
+- **Do not forget to update the `index.ts` file with your exports !**
+- If you use `ng generate service myservice --project mylib`, Angular will always append `lib` to the path
+  - I advise you to rewrite the `path` property of your schematics in `angular.json` ([See how](../../../../angular.json#L71))
+  - If you place your files elsewhere than where the schematic puts them, it won't give a neat path (e.g. `import from "mylib/src/lib/http"`)
