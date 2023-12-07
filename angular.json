@@ -2,6 +2,77 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
+  "cli": {
+    "analytics": false,
+    "cache": {
+      "enabled": true
+    },
+    "packageManager": "npm",
+    "warnings": {
+      "versionMismatch": false
+    }
+  },
+  "schematics": {
+    "@schematics/angular:component": {
+      "changeDetection": "OnPush",
+      "displayBlock": true,
+      "standalone": true,
+      "style": "scss"
+    },
+    "@schematics/angular:directive": {
+      "standalone": true
+    },
+    "@schematics/angular:guard": {
+      "functional": true
+    },
+    "@schematics/angular:interceptor": {
+      "functional": true
+    },
+    "@schematics/angular:library": {
+      "standalone": true
+    },
+    "@schematics/angular:pipe": {
+      "standalone": true
+    },
+    "@schematics/angular:resolver": {
+      "functional": true
+    }
+  },
   "projects": {
+    "nuidity": {
+      "projectType": "library",
+      "root": "projects/nuidity",
+      "sourceRoot": "projects/nuidity/src",
+      "prefix": "nui",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/nuidity/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/nuidity/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/nuidity/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/nuidity/tsconfig.spec.json",
+            "polyfills": ["zone.js", "zone.js/testing"]
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "inlineStyle": true
+        }
+      }
+    }
   }
 }
