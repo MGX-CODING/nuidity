@@ -8,7 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "build:schematics": "npm run build --prefix projects/nuidity",
-    "serve:schematics": "npm run serve --prefix projects/nuidity"
+    "serve:schematics": "npm run serve --prefix projects/nuidity",
+    "entrypoint": "npm run build:schematics && ng g @mgx/nuidity:entrypoint"
   },
   "private": true,
   "dependencies": {
