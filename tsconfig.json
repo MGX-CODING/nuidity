@@ -15,7 +15,7 @@
     "declaration": false,
     "experimentalDecorators": true,
     "paths": {
-      "nuidity": [
+      "@nuidity": [
         "./dist/nuidity"
       ]
     },

@@ -42,7 +42,7 @@
     "nuidity": {
       "projectType": "library",
       "root": "projects/nuidity",
-      "sourceRoot": "projects/nuidity/src",
+      "sourceRoot": "projects/nuidity",
       "prefix": "nui",
       "architect": {
         "build": {
@@ -70,7 +70,31 @@
       },
       "schematics": {
         "@schematics/angular:component": {
+          "path": "projects/nuidity",
           "inlineStyle": true
+        },
+        "@schematics/angular:directive": {
+          "path": "projects/nuidity",
+          "standalone": true
+        },
+        "@schematics/angular:guard": {
+          "path": "projects/nuidity",
+          "functional": true
+        },
+        "@schematics/angular:interceptor": {
+          "path": "projects/nuidity",
+          "functional": true
+        },
+        "@schematics/angular:pipe": {
+          "path": "projects/nuidity",
+          "standalone": true
+        },
+        "@schematics/angular:resolver": {
+          "path": "projects/nuidity",
+          "functional": true
+        },
+        "@schematics/angular:service": {
+          "path": "projects/nuidity"
         }
       }
     },

@@ -1,0 +1,10 @@
+{
+  "$schema": "../../../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "entrypoint": {
+      "description": "Create a secondary entrypoint for your library",
+      "factory": "./entrypoint/index",
+      "schema": "./entrypoint/schema.json"
+    }
+  }
+}

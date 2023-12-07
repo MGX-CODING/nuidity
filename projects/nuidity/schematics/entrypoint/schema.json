@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "EntrypointSchematic",
+  "title": "Entrypoint Schematic",
+  "description": "Creates a secondary entrypoint in a library. Used for convenience purposes.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the secondary module",
+      "alias": "n",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What name should the secondary module have ?"
+    },
+    "project": {
+      "type": "string",
+      "description": "Which project to create the entrypoint into",
+      "alias": "p"
+    }
+  },
+  "required": ["name"]
+}
