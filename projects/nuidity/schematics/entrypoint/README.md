@@ -21,3 +21,15 @@ npx ng generate @mgx/nuidity:entrypoint -n NAME -p PROJECT
 - If you use `ng generate service myservice --project mylib`, Angular will always append `lib` to the path
   - I advise you to rewrite the `path` property of your schematics in `angular.json` ([See how](../../../../angular.json#L71))
   - If you place your files elsewhere than where the schematic puts them, it won't give a neat path (e.g. `import from "mylib/src/lib/http"`)
+
+## Running locally
+
+If you are using `npx ng build nuidity --watch`, everytime you make a change, the schematic gets deleted.
+
+To avoid that, run
+
+```bash
+npm run entrypoint -- FEATURE
+```
+
+This will compile and run the schematics instantly, so it should always work.

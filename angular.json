@@ -69,13 +69,17 @@
         }
       },
       "schematics": {
+        "@schematics/angular:module": {
+          "path": "projects/nuidity"
+        },
         "@schematics/angular:component": {
           "path": "projects/nuidity",
-          "inlineStyle": true
+          "inlineStyle": true,
+          "standalone": false
         },
         "@schematics/angular:directive": {
           "path": "projects/nuidity",
-          "standalone": true
+          "standalone": false
         },
         "@schematics/angular:guard": {
           "path": "projects/nuidity",
@@ -87,7 +91,7 @@
         },
         "@schematics/angular:pipe": {
           "path": "projects/nuidity",
-          "standalone": true
+          "standalone": false
         },
         "@schematics/angular:resolver": {
           "path": "projects/nuidity",
