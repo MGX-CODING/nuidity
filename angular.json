@@ -64,7 +64,9 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "tsConfig": "projects/nuidity/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"]
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "karmaConfig": "projects/nuidity/karma.conf.js",
+            "watch": false
           }
         }
       },
