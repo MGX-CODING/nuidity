@@ -3,5 +3,8 @@
   "dest": "../../dist/nuidity",
   "lib": {
     "entryFile": "./index.ts"
-  }
+  },
+  "assets": [
+    { "input": "styles/schematics", "glob": "**/*.scss", "output": "raw-theme" }
+  ]
 }
