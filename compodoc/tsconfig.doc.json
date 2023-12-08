@@ -1,0 +1,8 @@
+{
+  "include": ["../projects/nuidity/**/*.ts"],
+  "exclude": [
+    "../projects/nuidity/**/*.spec.ts",
+    "../projects/nuidity/schematics/**/*.ts",
+    "../projects/nuidity/utils/**/*.ts"
+  ]
+}

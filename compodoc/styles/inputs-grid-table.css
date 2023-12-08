@@ -1,0 +1,68 @@
+/*
+  For Input table in info tab, convert it to grid display
+*/
+
+/* Converts table display */
+section[data-compodoc="block-inputs"] > h3#inputs + table {
+  display: block;
+}
+
+/* Converts tbody to grid display */
+section[data-compodoc="block-inputs"] > h3#inputs + table tbody {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  place-items: stretch;
+}
+
+/* Prettyfies the lines and rows to align the text correctly */
+section[data-compodoc="block-inputs"] > h3#inputs + table tbody tr,
+section[data-compodoc="block-inputs"] > h3#inputs + table tbody tr td {
+  display: grid;
+  place-items: stretch;
+  width: 100%;
+  border-width: 0;
+}
+
+/* Put back the border for the lines */
+section[data-compodoc="block-inputs"] > h3#inputs + table tbody tr {
+  border-width: 1px;
+}
+
+/* Remove the border to merge with the previous line visually */
+section[data-compodoc="block-inputs"]
+  > h3#inputs
+  + table
+  tbody
+  tr:nth-of-type(even) {
+  border-left-width: 0;
+}
+
+/* Remove the border to merge with the next line visually */
+section[data-compodoc="block-inputs"]
+  > h3#inputs
+  + table
+  tbody
+  tr:nth-of-type(odd) {
+  border-right-width: 0;
+}
+
+/* Remove the "type :" label that comes along with the input type */
+section[data-compodoc="block-inputs"]
+  > h3#inputs
+  + table
+  tbody
+  tr:nth-of-type(even)
+  td
+  i {
+  display: none;
+}
+
+/* Pretty aligns the type in the line */
+section[data-compodoc="block-inputs"]
+  > h3#inputs
+  + table
+  tbody
+  tr:nth-of-type(even)
+  td {
+  justify-content: flex-end;
+}

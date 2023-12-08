@@ -1,0 +1,77 @@
+/* 
+  Adjusts spaces in the compodoc and remove some useless parts of it.
+*/
+
+/* Increase margins for titles for better clarity */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Remove the "Example :" label above code snippets */
+b:has(+ div div.code-toolbar) {
+  display: none;
+}
+
+/* Adds space around code snippets */
+div:has(> div.code-toolbar) {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Remove the margin of paragraphs */
+p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Clear the margins of tab contents */
+.tab-content,
+.tab-pane.active.in.show {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Clears overflow on content due to previous styles */
+.content-data {
+  height: auto;
+}
+
+/* Increases padding of main page */
+.content.directive {
+  padding: 2rem 3rem;
+}
+
+/* On README page, add a gap for pretty display */
+.content.getting-started .content-data {
+  gap: 1rem;
+}
+
+/* Adapt the titles accordingly */
+.content.getting-started .content-data :is(h1, h2, h3, h4, h5, h6) {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Remove the "File" section of info tabs */
+#info p:first-child,
+#info p:first-child + h3,
+#info p:first-child + h3 + p,
+#info p:first-child + h3 + p + p.comment,
+#info p:first-child + h3 + p + p.comment + p.comment {
+  display: none;
+}
+
+/* Remove the "Defined in" line of tables in the Info tab */
+section[data-compodoc="block-inputs"]
+  > h3#inputs
+  + table
+  tbody
+  tr:last-of-type {
+  display: none;
+}

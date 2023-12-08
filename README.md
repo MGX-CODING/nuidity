@@ -2,6 +2,8 @@
 
 ## Table of content
 
+_<i>(Note : This is for Github only, this will not work for compodoc !)</i>_
+
 - [Projects](./projects/)
   - [N-ui-dity](./projects/nuidity/README.md)
   - [Playground](./projects/playground/README.md)
@@ -14,5 +16,5 @@
 
 - Create a dedicated entrypoint if necessary
 - Code your component
-- Fully document it (JSDoc)
+- Fully document it (JSDoc, README for compodoc)
 - Fully test it
