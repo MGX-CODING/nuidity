@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "NuidityNgAddSchematic",
+  "title": "NG add schematic",
+  "description": "Adds n-ui-dity library to your application",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "project": {
+      "alias": "p",
+      "type": "string",
+      "description": "Project to add the library to",
+      "$default": {
+        "$source": "projectName"
+      },
+      "x-prompt": "Which project the library should be added to ?"
+    },
+    "includeRawTheme": {
+      "alias": "t",
+      "type": "boolean",
+      "description": "Adds the raw SASS files for customizing the library with your own theme.",
+      "x-prompt": {
+        "message": "How would you like to theme your application ?",
+        "type": "list",
+        "items": [
+          { "label": "I will create my own theme", "value": true },
+          { "label": "I will use an existing theme", "value": false }
+        ]
+      }
+    }
+  },
+  "required": ["project", "includeRawTheme"]
+}

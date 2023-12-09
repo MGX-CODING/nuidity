@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "scripts": {
     "build": "tsc -p tsconfig.schematics.json",
-    "postbuild": "copyfiles schematics/*/schema.json schematics/*/files/** schematics/collection.json ../../dist/nuidity/"
+    "postbuild": "node schematics/copy-files.js",
+    "postbuildold": "copyfiles schematics/*/schema.json -u 1 schematics/*/files/** schematics/common_files/**/* schematics/collection.json ../../dist/nuidity/"
   },
   "peerDependencies": {
     "@angular/common": "^17.0.0",
@@ -19,7 +20,7 @@
   },
   "sideEffects": false,
   "schematics": "./schematics/collection.json",
-  "entrypoint": {
+  "ng-add": {
     "save": "devDependencies"
   }
 }
