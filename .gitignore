@@ -43,3 +43,6 @@ Thumbs.db
 
 # Compodoc
 documentation
+
+# Playgrounds
+projects/playground*
