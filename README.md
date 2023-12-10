@@ -1,13 +1,5 @@
-# N-ui-dity : the features without the styles
+# N-ui-dity : the features, without the styles
 
-TODO : 
+Please refer to our wiki for everything ! 
 
-- Main README
-- Documentation folder with READMEs
-  - INSTALL
-  - CONTRIBUTING
-  - INQUIRIES
-  - SUPPORT US
-  - LICENCES
-- README per project
-- README per feature (compodoc style ?)
+[Access the wiki](https://github.com/MGX-CODING/nuidity/wiki)
