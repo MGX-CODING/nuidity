@@ -11,10 +11,15 @@ import {
   url,
 } from '@angular-devkit/schematics';
 import {
+  addModuleImportToRootModule,
+  getAppModulePath,
   getProjectFromWorkspace,
+  getProjectMainFile,
   getProjectStyleFile,
   getProjectTargetOptions,
+  hasNgModuleImport,
 } from '@angular/cdk/schematics';
+import { addRootProvider } from '@schematics/angular/utility';
 import {
   getWorkspace,
   updateWorkspace,
@@ -37,7 +42,9 @@ export default function ngAddSchematic(options: NgAddOptions): Rule {
     const operations: Rule[] = [];
 
     if (options.includeRawTheme) {
-      operations.push(mergeWith(generateRawThemeFiles(targetPath)));
+      operations.push(mergeWith(addRawThemeFiles(targetPath)));
+      operations.push(mergeWith(addConfigModule(targetPath)));
+      operations.push(updateAppConfig(project, options.project));
       operations.push(addStyles(options.project, targetPath));
     }
 
@@ -46,8 +53,14 @@ export default function ngAddSchematic(options: NgAddOptions): Rule {
 }
 
 /** Add raw theme files to the given folder */
-function generateRawThemeFiles(path: string): Source {
+function addRawThemeFiles(path: string): Source {
   return apply(url('../common_files/styles'), [move(normalize(path))]);
+}
+
+/** Adds the library configuration module to the application */
+function addConfigModule(path: string) {
+  const file = '../common_files/configs';
+  return apply(url(file), [move(normalize(path))]);
 }
 
 /** Update workspace's style preprocessor options and project's global style sheet */
@@ -70,6 +83,49 @@ function addPreprocessor(project: workspaces.ProjectDefinition, path: string) {
     options['stylePreprocessorOptions'])) as { includePaths: string[] };
 
   if (!includePaths.includes(path)) includePaths.push(path);
+}
+
+/** Updates the application config (or module) to add the configuration module */
+function updateAppConfig(
+  project: workspaces.ProjectDefinition,
+  projectName: string
+): Rule {
+  return (tree, { logger }) => {
+    const dir = normalize(project.sourceRoot + '/app');
+    const importPath = normalize('../theming/nuidity.config.module');
+    const modulePath = normalize(dir + '/app.module.ts');
+    const configPath = normalize(dir + '/app.config.ts');
+
+    if (tree.exists(configPath)) {
+      const content = tree.read(configPath)!.toString();
+
+      if (content.includes('provideNuidityConfig()'))
+        return logger.warn('provideNuidityConfig() already provided');
+
+      return addRootProvider(
+        projectName,
+        ({ code, external }) =>
+          code`${external('provideNuidityConfig', importPath)}()`
+      );
+    }
+
+    if (tree.exists(modulePath)) {
+      const mainFile = getProjectMainFile(project);
+      const modulePath = getAppModulePath(tree, mainFile);
+      const modname = 'NuiConfigModule';
+
+      if (!hasNgModuleImport(tree, modulePath, modname))
+        return addModuleImportToRootModule(tree, modname, importPath, project);
+      else
+        return logger.warn('NuiConfigModule already imported into app module');
+    }
+
+    logger.error('Unable to find app config or app module');
+    logger.warn('Nuidity configuration module is thus not imported');
+    logger.warn('Unless you add it by hand, no feature can be configured');
+
+    return tree;
+  };
 }
 
 function updateStyleSheet(
@@ -96,6 +152,10 @@ function updateStyleSheet(
   }
 
   const content = buffer.toString();
+
+  if (content.includes('@include core.applyTheme;'))
+    return logger.warn('Main mixin already imported into global style sheet');
+
   const useregex = /(@use(?![\s\S]*@use).*$)/gm;
   const inserted =
     `// Import core style from "theming" folder\n` +
