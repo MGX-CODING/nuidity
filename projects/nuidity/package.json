@@ -1,5 +1,5 @@
 {
-  "name": "@mgx/nuidity",
+  "name": "@mgxdev/nuidity",
   "version": "0.0.1",
   "scripts": {
     "build": "tsc -p tsconfig.schematics.json",
