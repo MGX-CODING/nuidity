@@ -1,5 +1,5 @@
 import { Directive, HostBinding, Input } from '@angular/core';
-import { LIB_PREFIX, normalizeString } from '@mgx/nuidity/utils';
+import { LIB_PREFIX, normalizeString } from '@mgxdev/nuidity/utils';
 
 @Directive({ selector: '[nui-button]' })
 export class NuiButtonDirective {

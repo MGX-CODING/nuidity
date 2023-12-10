@@ -5,7 +5,7 @@ Simple directive that unifies classes on button elements.
 ## Import
 
 ```typescript
-import { NuiButtonsModule } from "@mgx/nuidity/buttons";
+import { NuiButtonsModule } from "@mgxdev/nuidity/buttons";
 ```
 
 ## Usage
