@@ -1,81 +1,58 @@
-import { normalize, workspaces } from '@angular-devkit/core';
-import {
-  Rule,
-  SchematicContext,
-  Source,
-  Tree,
-  apply,
-  chain,
-  mergeWith,
-  move,
-  url,
-} from '@angular-devkit/schematics';
-import {
-  addModuleImportToRootModule,
-  getAppModulePath,
-  getProjectFromWorkspace,
-  getProjectMainFile,
-  getProjectStyleFile,
-  getProjectTargetOptions,
-  hasNgModuleImport,
-} from '@angular/cdk/schematics';
-import { addRootProvider } from '@schematics/angular/utility';
-import {
-  getWorkspace,
-  updateWorkspace,
-} from '@schematics/angular/utility/workspace';
-import { ProjectType } from '@schematics/angular/utility/workspace-models';
+import * as S from '../helpers';
 
 import { exit } from '../utils';
 import { NgAddOptions } from './schema';
 
-export default function ngAddSchematic(options: NgAddOptions): Rule {
-  return async (tree: Tree, context: SchematicContext) => {
-    const workspace = await getWorkspace(tree);
-    const project = getProjectFromWorkspace(workspace, options.project);
+export default function ngAddSchematic(options: NgAddOptions): S.Rule {
+  return async (tree: S.Tree, context: S.SchematicContext) => {
+    const workspace = await S.getWorkspace(tree);
+    const project = S.getProjectFromWorkspace(workspace, options.project);
     const sourceRoot = project?.sourceRoot!;
     const targetPath = sourceRoot + '/theming';
 
-    if (project.extensions['projectType'] !== ProjectType.Application)
+    if (project.extensions['projectType'] !== S.ProjectType.Application)
       throw exit('Selected project is not an application.');
 
-    const operations: Rule[] = [];
+    const operations: S.Rule[] = [];
 
     if (options.includeRawTheme) {
-      operations.push(mergeWith(addRawThemeFiles(targetPath)));
-      operations.push(mergeWith(addConfigModule(targetPath)));
+      operations.push(S.mergeWith(addRawThemeFiles(targetPath)));
+      operations.push(S.mergeWith(addConfigModule(targetPath)));
       operations.push(updateAppConfig(project, options.project));
       operations.push(addStyles(options.project, targetPath));
     }
 
-    return chain(operations);
+    return S.chain(operations);
   };
 }
 
 /** Add raw theme files to the given folder */
-function addRawThemeFiles(path: string): Source {
-  return apply(url('../common_files/styles'), [move(normalize(path))]);
+function addRawThemeFiles(path: string): S.Source {
+  return S.apply(S.url('../common_files/styles'), [S.move(S.normalize(path))]);
 }
 
 /** Adds the library configuration module to the application */
 function addConfigModule(path: string) {
   const file = '../common_files/configs';
-  return apply(url(file), [move(normalize(path))]);
+  return S.apply(S.url(file), [S.move(S.normalize(path))]);
 }
 
 /** Update workspace's style preprocessor options and project's global style sheet */
-function addStyles(projectName: string, path: string): Rule {
+function addStyles(projectName: string, path: string): S.Rule {
   return (tree, context) => {
-    return updateWorkspace((workspace) => {
-      const project = getProjectFromWorkspace(workspace, projectName);
+    return S.updateWorkspace((workspace) => {
+      const project = S.getProjectFromWorkspace(workspace, projectName);
       addPreprocessor(project, path);
       updateStyleSheet(tree, context, project);
     });
   };
 }
 
-function addPreprocessor(project: workspaces.ProjectDefinition, path: string) {
-  const options = getProjectTargetOptions(project, 'build');
+function addPreprocessor(
+  project: S.workspaces.ProjectDefinition,
+  path: string
+) {
+  const options = S.getProjectTargetOptions(project, 'build');
   const { includePaths } = (options['stylePreprocessorOptions'] ??
     ((options['stylePreprocessorOptions'] = {
       includePaths: [],
@@ -87,14 +64,14 @@ function addPreprocessor(project: workspaces.ProjectDefinition, path: string) {
 
 /** Updates the application config (or module) to add the configuration module */
 function updateAppConfig(
-  project: workspaces.ProjectDefinition,
+  project: S.workspaces.ProjectDefinition,
   projectName: string
-): Rule {
+): S.Rule {
   return (tree, { logger }) => {
-    const dir = normalize(project.sourceRoot + '/app');
-    const importPath = normalize('../theming/nuidity.config.module');
-    const modulePath = normalize(dir + '/app.module.ts');
-    const configPath = normalize(dir + '/app.config.ts');
+    const dir = S.normalize(project.sourceRoot + '/app');
+    const importPath = S.normalize('../theming/nuidity.config.module');
+    const modulePath = S.normalize(dir + '/app.module.ts');
+    const configPath = S.normalize(dir + '/app.config.ts');
 
     if (tree.exists(configPath)) {
       const content = tree.read(configPath)!.toString();
@@ -102,7 +79,7 @@ function updateAppConfig(
       if (content.includes('provideNuidityConfig()'))
         return logger.warn('provideNuidityConfig() already provided');
 
-      return addRootProvider(
+      return S.addRootProvider(
         projectName,
         ({ code, external }) =>
           code`${external('provideNuidityConfig', importPath)}()`
@@ -110,12 +87,17 @@ function updateAppConfig(
     }
 
     if (tree.exists(modulePath)) {
-      const mainFile = getProjectMainFile(project);
-      const modulePath = getAppModulePath(tree, mainFile);
+      const mainFile = S.getProjectMainFile(project);
+      const modulePath = S.getAppModulePath(tree, mainFile);
       const modname = 'NuiConfigModule';
 
-      if (!hasNgModuleImport(tree, modulePath, modname))
-        return addModuleImportToRootModule(tree, modname, importPath, project);
+      if (!S.hasNgModuleImport(tree, modulePath, modname))
+        return S.addModuleImportToRootModule(
+          tree,
+          modname,
+          importPath,
+          project
+        );
       else
         return logger.warn('NuiConfigModule already imported into app module');
     }
@@ -129,11 +111,11 @@ function updateAppConfig(
 }
 
 function updateStyleSheet(
-  tree: Tree,
-  { logger }: SchematicContext,
-  project: workspaces.ProjectDefinition
+  tree: S.Tree,
+  { logger }: S.SchematicContext,
+  project: S.workspaces.ProjectDefinition
 ) {
-  const path = getProjectStyleFile(project);
+  const path = S.getProjectStyleFile(project);
 
   if (!path) {
     logger.error('Could not find global style sheet in project');
