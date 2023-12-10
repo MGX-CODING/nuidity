@@ -1,4 +1,10 @@
+@use "../vars";
+@use "../mixins";
+
 @mixin core {
+  // Default class on nuidity buttons
+  .nui-button {}
+
   // Button modes : replace with your implemented modes (duplicate it as much as needed)
   .nui-REPLACE_ME-button {}
 }

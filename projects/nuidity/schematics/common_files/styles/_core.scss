@@ -1,4 +1,6 @@
 @use "./vars";
+@use "./mixins";
+
 @use "./features/buttons";
 
 @mixin applyTheme {

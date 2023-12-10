@@ -1,4 +1,6 @@
+@use "./mixins";
+
 /*
   Use this file to store your variables.
-  Due to how SASS works, and how n-ui-dity files are imported, all variables can be used without imports !
+  This file is imported by default in all other files, so you just have to use "vars.$myvar" to use your variables.
 */
