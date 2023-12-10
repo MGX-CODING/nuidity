@@ -20,6 +20,7 @@ const pf = LIB_PREFIX;
 describe('Button directive', () => {
   let fixture: ComponentFixture<TestingComponent>;
   let component: TestingComponent;
+  let element: HTMLElement;
 
   beforeEach(async () => {
     fixture = TestBed.configureTestingModule({
@@ -29,6 +30,8 @@ describe('Button directive', () => {
     component = fixture.componentInstance;
 
     fixture.detectChanges();
+
+    element = fixture.debugElement.query(By.css('[nui-button]')).nativeElement;
   });
 
   it('Gets created on use', () => {
@@ -39,15 +42,9 @@ describe('Button directive', () => {
     expect(directive).toBeDefined();
   });
 
+  it('Has the base class', () => expect(element).toHaveClass(`${pf}-${ft}`));
+
   describe('"mode" @Input', () => {
-    let element: HTMLElement;
-
-    beforeEach(() => {
-      element = fixture.debugElement.query(
-        By.css('[nui-button]')
-      ).nativeElement;
-    });
-
     it('Works with simple string', () => {
       component.mode = 'icon';
       fixture.detectChanges();

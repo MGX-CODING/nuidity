@@ -5,6 +5,9 @@ import { LIB_PREFIX, normalizeString } from '@mgxdev/nuidity/utils';
 export class NuiButtonDirective {
   private static FEAT_NAME = 'button';
 
+  @HostBinding(`class.${LIB_PREFIX}-${NuiButtonDirective.FEAT_NAME}`)
+  baseClass = true;
+
   @Input({
     transform: (value: string | string[]) =>
       value
