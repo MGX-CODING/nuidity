@@ -2,13 +2,9 @@
   "name": "nuidity",
   "version": "0.0.0",
   "scripts": {
-    "test": "ng test",
     "build:schematics": "npm run build --prefix projects/nuidity",
-    "serve:schematics": "npm run serve --prefix projects/nuidity",
-    "compodoc:build": "compodoc -c compodoc/compodoc.json",
-    "compodoc:serve": "compodoc -c compodoc/compodoc.json -s -w",
-    "serve:ssr:playground": "node dist/playground/server/server.mjs",
-    "serve:ssr:playground-standalone": "node dist/playground-standalone/server/server.mjs",
+    "compodoc:build": "compodoc -c projects/compodoc/compodoc.json",
+    "compodoc:serve": "compodoc -c projects/compodoc/compodoc.json -s -w",
     "project:basic": "ng g app playground --routing -S --ssr --standalone false --strict --style scss",
     "project:standalone": "ng g app playground-standalone --routing -S --ssr --standalone true --strict --style scss"
   },

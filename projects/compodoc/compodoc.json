@@ -1,9 +1,10 @@
 {
   "name": "N-ui-dity's compodoc",
-  "tsconfig": "compodoc/tsconfig.doc.json",
-  "extTheme": "compodoc/",
+  "tsconfig": "projects/compodoc/tsconfig.doc.json",
+  "extTheme": "projects/compodoc/",
   "language": "en-US",
   "theme": "gitbook",
+  "output": "dist/compodoc",
   "hideGenerator": true,
   "disableCoverage": true,
   "disablePrivate": true,
