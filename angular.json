@@ -146,23 +146,22 @@
             "outputPath": "dist/playground",
             "index": "projects/playground/src/index.html",
             "browser": "projects/playground/src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "projects/playground/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
               "projects/playground/src/favicon.ico",
               "projects/playground/src/assets"
             ],
-            "styles": [
-              "projects/playground/src/styles.scss"
-            ],
+            "styles": ["projects/playground/src/styles.scss"],
             "scripts": [],
             "server": "projects/playground/src/main.server.ts",
             "prerender": true,
             "ssr": {
               "entry": "projects/playground/server.ts"
+            },
+            "stylePreprocessorOptions": {
+              "includePaths": ["projects/playground/src/theming"]
             }
           },
           "configurations": {
@@ -210,19 +209,14 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "projects/playground/tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
               "projects/playground/src/favicon.ico",
               "projects/playground/src/assets"
             ],
-            "styles": [
-              "projects/playground/src/styles.scss"
-            ],
+            "styles": ["projects/playground/src/styles.scss"],
             "scripts": []
           }
         }
@@ -267,23 +261,22 @@
             "outputPath": "dist/playground-standalone",
             "index": "projects/playground-standalone/src/index.html",
             "browser": "projects/playground-standalone/src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "projects/playground-standalone/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
               "projects/playground-standalone/src/favicon.ico",
               "projects/playground-standalone/src/assets"
             ],
-            "styles": [
-              "projects/playground-standalone/src/styles.scss"
-            ],
+            "styles": ["projects/playground-standalone/src/styles.scss"],
             "scripts": [],
             "server": "projects/playground-standalone/src/main.server.ts",
             "prerender": true,
             "ssr": {
               "entry": "projects/playground-standalone/server.ts"
+            },
+            "stylePreprocessorOptions": {
+              "includePaths": ["projects/playground-standalone/src/theming"]
             }
           },
           "configurations": {
@@ -331,19 +324,14 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "projects/playground-standalone/tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
               "projects/playground-standalone/src/favicon.ico",
               "projects/playground-standalone/src/assets"
             ],
-            "styles": [
-              "projects/playground-standalone/src/styles.scss"
-            ],
+            "styles": ["projects/playground-standalone/src/styles.scss"],
             "scripts": []
           }
         }
