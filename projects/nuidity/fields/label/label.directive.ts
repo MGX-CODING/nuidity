@@ -5,5 +5,5 @@ export class NuiLabelDirective {
   /** binding to the "for" attribute */
   @Input()
   @HostBinding('attr.for')
-  for?: string;
+  public for?: string;
 }

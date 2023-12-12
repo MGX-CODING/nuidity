@@ -36,7 +36,7 @@ export class NuiFieldComponent implements AfterContentInit {
 
   /** NgControl from the nui-input directive, only available after content init. */
   private get ngControl() {
-    return this.inputDirective?.ngControl;
+    return this.inputDirective?.['ngControl'];
   }
 
   /** Getter that checks if the control has the required validator */
@@ -46,13 +46,13 @@ export class NuiFieldComponent implements AfterContentInit {
 
   /** For radios & checkboxes, to add the checked class to the host */
   private get isChecked() {
-    return !!this.inputDirective?.element.nativeElement.checked;
+    return !!this.inputDirective?.['element'].nativeElement.checked;
   }
 
   /** Adds a class host depending on the input type */
   @HostBinding('class')
   private get inputTypeClass() {
-    const type = this.inputDirective?.type;
+    const type = this.inputDirective?.['type'];
     if (!type) return '';
     return `nui-${type}-field`;
   }
