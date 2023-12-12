@@ -109,15 +109,13 @@
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss",
-          "skipTests": true,
-          "standalone": false
+          "skipTests": true
         },
         "@schematics/angular:class": {
           "skipTests": true
         },
         "@schematics/angular:directive": {
-          "skipTests": true,
-          "standalone": false
+          "skipTests": true
         },
         "@schematics/angular:guard": {
           "skipTests": true
@@ -126,8 +124,7 @@
           "skipTests": true
         },
         "@schematics/angular:pipe": {
-          "skipTests": true,
-          "standalone": false
+          "skipTests": true
         },
         "@schematics/angular:resolver": {
           "skipTests": true
@@ -146,23 +143,19 @@
             "outputPath": "dist/playground",
             "index": "projects/playground/src/index.html",
             "browser": "projects/playground/src/main.ts",
-            "polyfills": ["zone.js"],
+            "polyfills": [
+              "zone.js"
+            ],
             "tsConfig": "projects/playground/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
               "projects/playground/src/favicon.ico",
               "projects/playground/src/assets"
             ],
-            "styles": ["projects/playground/src/styles.scss"],
-            "scripts": [],
-            "server": "projects/playground/src/main.server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "projects/playground/server.ts"
-            },
-            "stylePreprocessorOptions": {
-              "includePaths": ["projects/playground/src/theming"]
-            }
+            "styles": [
+              "projects/playground/src/styles.scss"
+            ],
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -209,129 +202,19 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": ["zone.js", "zone.js/testing"],
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
             "tsConfig": "projects/playground/tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
               "projects/playground/src/favicon.ico",
               "projects/playground/src/assets"
             ],
-            "styles": ["projects/playground/src/styles.scss"],
-            "scripts": []
-          }
-        }
-      }
-    },
-    "playground-standalone": {
-      "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss",
-          "skipTests": true
-        },
-        "@schematics/angular:class": {
-          "skipTests": true
-        },
-        "@schematics/angular:directive": {
-          "skipTests": true
-        },
-        "@schematics/angular:guard": {
-          "skipTests": true
-        },
-        "@schematics/angular:interceptor": {
-          "skipTests": true
-        },
-        "@schematics/angular:pipe": {
-          "skipTests": true
-        },
-        "@schematics/angular:resolver": {
-          "skipTests": true
-        },
-        "@schematics/angular:service": {
-          "skipTests": true
-        }
-      },
-      "root": "projects/playground-standalone",
-      "sourceRoot": "projects/playground-standalone/src",
-      "prefix": "app",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:application",
-          "options": {
-            "outputPath": "dist/playground-standalone",
-            "index": "projects/playground-standalone/src/index.html",
-            "browser": "projects/playground-standalone/src/main.ts",
-            "polyfills": ["zone.js"],
-            "tsConfig": "projects/playground-standalone/tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              "projects/playground-standalone/src/favicon.ico",
-              "projects/playground-standalone/src/assets"
+            "styles": [
+              "projects/playground/src/styles.scss"
             ],
-            "styles": ["projects/playground-standalone/src/styles.scss"],
-            "scripts": [],
-            "server": "projects/playground-standalone/src/main.server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "projects/playground-standalone/server.ts"
-            },
-            "stylePreprocessorOptions": {
-              "includePaths": ["projects/playground-standalone/src/theming"]
-            }
-          },
-          "configurations": {
-            "production": {
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
-                }
-              ],
-              "outputHashing": "all"
-            },
-            "development": {
-              "optimization": false,
-              "extractLicenses": false,
-              "sourceMap": true
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "configurations": {
-            "production": {
-              "buildTarget": "playground-standalone:build:production"
-            },
-            "development": {
-              "buildTarget": "playground-standalone:build:development"
-            }
-          },
-          "defaultConfiguration": "development"
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "buildTarget": "playground-standalone:build"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "polyfills": ["zone.js", "zone.js/testing"],
-            "tsConfig": "projects/playground-standalone/tsconfig.spec.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              "projects/playground-standalone/src/favicon.ico",
-              "projects/playground-standalone/src/assets"
-            ],
-            "styles": ["projects/playground-standalone/src/styles.scss"],
             "scripts": []
           }
         }
