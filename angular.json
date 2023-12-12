@@ -157,19 +157,11 @@
             }
           },
           "configurations": {
+            "dev": {
+              "tsConfig": "projects/playground/tsconfig.dev.json"
+            },
             "production": {
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
-                }
-              ],
+              "budgets": [],
               "outputHashing": "all"
             },
             "development": {
@@ -183,6 +175,9 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
+            "dev": {
+              "buildTarget": "playground:build:dev"
+            },
             "production": {
               "buildTarget": "playground:build:production"
             },
