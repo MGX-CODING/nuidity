@@ -23,7 +23,6 @@ describe('Field input directive', () => {
   helper.prepareTestBed();
 
   helper.isCreated();
-  helper.hasClass('nui-field-input');
   helper.canHandleAttribute('id');
   helper.canHandleAttribute('type');
 });

@@ -1,10 +1,7 @@
 import { Directive, HostBinding, Input } from '@angular/core';
 import { normalizeString } from '@mgxdev/nuidity/utils';
 
-@Directive({
-  selector: '[nui-button]',
-  host: { '[class.nui-button]': 'true' },
-})
+@Directive({ selector: '[nui-button]' })
 export class NuiButtonDirective {
   @Input({
     transform: (value: string | string[]) =>

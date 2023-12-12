@@ -8,11 +8,11 @@
   // Field types : replace with the type of the input (text, password, etc) (duplicate it as much as needed)
   .nui-TYPE-field {}
 
-  // The input element inside of the field
-  .nui-field-input {}
+  // Directive selector on field inputs
+  [nui-input] {}
 
-  // The label element inside of the field
-  .nui-field-label {}
+  // Directive selector on field labels
+  [nui-label] {}
 
   // The input in the field is pristine
   nui-field.ng-pristine {}

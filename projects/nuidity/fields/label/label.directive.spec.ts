@@ -20,6 +20,5 @@ describe('Field label directive', () => {
   helper.prepareTestBed();
 
   helper.isCreated();
-  helper.hasClass('nui-field-label');
   helper.canHandleAttribute('for');
 });

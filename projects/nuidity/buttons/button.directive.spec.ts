@@ -21,7 +21,6 @@ const helper = new TestableFeature(
 describe('Button directive', () => {
   helper.prepareTestBed();
   helper.isCreated();
-  helper.hasClass('nui-button');
 
   describe('"mode" @Input', () => {
     const proceed = (mode: any, classes: string[]) => {

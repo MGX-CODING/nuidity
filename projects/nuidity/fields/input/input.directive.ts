@@ -7,10 +7,7 @@ import {
 } from '@angular/core';
 import { NgControl } from '@angular/forms';
 
-@Directive({
-  selector: '[nui-input]',
-  host: { '[class.nui-field-input]': 'true' },
-})
+@Directive({ selector: '[nui-input]' })
 export class NuiInputDirective {
   /** Reference to the ngModel instance */
   public ngControl = inject(NgControl, { optional: true });
