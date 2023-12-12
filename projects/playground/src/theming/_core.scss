@@ -1,0 +1,14 @@
+@use "./vars";
+@use "./mixins";
+
+@use "./features/buttons";
+
+@mixin applyTheme {
+  /*
+    All features are imported here.
+    If you do not want to import some of them, feel free to comment / delete them !
+    Note that you can keep the imports if you kept their original format : they're partials and won't increase your final bundle size.
+  */
+
+  @include buttons.core;
+}
