@@ -10,9 +10,12 @@
 
   // Directive selector on field inputs
   [nui-input] {}
-
   // Directive selector on field labels
   [nui-label] {}
+  // Directive selector on field prefixes
+  [nui-prefix] {}
+  // Directive selector on field suffixes
+  [nui-suffix] {}
 
   // The input in the field is pristine
   nui-field.ng-pristine {}

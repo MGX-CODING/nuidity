@@ -14,7 +14,7 @@ const imports = [NuiFieldsModule, ReactiveFormsModule];
 describe('Field component', () => {
   describe('Class bindings', () => {
     const comp = createTestingComponent(
-      '<nui-field>   <label>label</label>   <input nui-input [type]="type" [formControl]="control" />   </nui-field>',
+      '<nui-field>   <input nui-input [type]="type" [formControl]="control" />   </nui-field>',
       imports,
       { control: new FormControl(''), type: 'text' }
     );
@@ -52,16 +52,19 @@ describe('Field component', () => {
 
     it('Binds to validations', () => {
       checkClass(
-        (c) => (
-          c.clearValidators(), c.setValue(''), c.updateValueAndValidity()
-        ),
+        (c) => {
+          c.clearValidators();
+          c.setValue('');
+          c.updateValueAndValidity();
+        },
         'ng-valid',
         'ng-invalid'
       );
       checkClass(
-        (c) => (
-          c.addValidators(Validators.required), c.updateValueAndValidity()
-        ),
+        (c) => {
+          c.addValidators(Validators.required);
+          c.updateValueAndValidity();
+        },
         'ng-invalid',
         'ng-valid'
       );
@@ -77,7 +80,10 @@ describe('Field component', () => {
       helper.component.type = 'checkbox';
       helper.fixture.detectChanges();
       checkClass(
-        (c) => (c.setValue(false), c.updateValueAndValidity()),
+        (c) => {
+          c.setValue(false);
+          c.updateValueAndValidity();
+        },
         '',
         'ng-checked'
       );

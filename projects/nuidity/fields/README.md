@@ -12,7 +12,9 @@ import { NuiFieldsModule } from "@mgxdev/nuidity/fields";
 
 ```html
 <nui-field>
-  <label nui-label>Username</label>
+  <span nui-prefix> 👍 </span>
+  <span nui-suffix> 👎 </span>
+  <label nui-label> Username </label>
   <input type="text" nui-input />
 </nui-field>
 ```
