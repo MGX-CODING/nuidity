@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { LIB_PREFIX } from '../utils';
+import { TestableFeature } from '../utils/testing/testable-feature.spec';
 import { NuiButtonDirective } from './button.directive';
 import { NuiButtonsModule } from './buttons.module';
 
@@ -14,83 +12,43 @@ class TestingComponent {
   mode?: string | string[];
 }
 
-const ft = NuiButtonDirective['FEAT_NAME'];
-const pf = LIB_PREFIX;
+const helper = new TestableFeature(
+  TestingComponent,
+  NuiButtonDirective,
+  '[nui-button]'
+);
 
 describe('Button directive', () => {
-  let fixture: ComponentFixture<TestingComponent>;
-  let component: TestingComponent;
-  let element: HTMLElement;
-
-  beforeEach(async () => {
-    fixture = TestBed.configureTestingModule({
-      imports: [TestingComponent],
-    }).createComponent(TestingComponent);
-
-    component = fixture.componentInstance;
-
-    fixture.detectChanges();
-
-    element = fixture.debugElement.query(By.css('[nui-button]')).nativeElement;
-  });
-
-  it('Gets created on use', () => {
-    const directive = fixture.debugElement
-      .query(By.directive(NuiButtonDirective))
-      .injector.get(NuiButtonDirective);
-
-    expect(directive).toBeDefined();
-  });
-
-  it('Has the base class', () => expect(element).toHaveClass(`${pf}-${ft}`));
+  helper.prepareTestBed();
+  helper.isCreated();
+  helper.hasClass('nui-button');
 
   describe('"mode" @Input', () => {
-    it('Works with simple string', () => {
-      component.mode = 'icon';
+    const proceed = (mode: any, classes: string[]) => {
+      const { component, fixture, element } = helper;
+      component.mode = mode;
       fixture.detectChanges();
-      expect(element).toHaveClass(`${pf}-icon-${ft}`);
-    });
+      for (const klass of classes)
+        expect(element).toHaveClass(`nui-${klass}-button`);
+    };
 
-    it('Works with composed string', () => {
-      component.mode = 'icon flat';
-      fixture.detectChanges();
-      expect(element).toHaveClass(`${pf}-icon-${ft}`);
-      expect(element).toHaveClass(`${pf}-flat-${ft}`);
-    });
+    it('Works with simple string', () => proceed('icon', ['icon']));
 
-    it('Works with arrays', () => {
-      component.mode = ['icon', 'flat'];
-      fixture.detectChanges();
-      expect(element).toHaveClass(`${pf}-icon-${ft}`);
-      expect(element).toHaveClass(`${pf}-flat-${ft}`);
-    });
+    it('Works with composed string', () =>
+      proceed('icon flat', ['icon', 'flat']));
 
-    it('Works with malformed strings', () => {
-      component.mode = '  icon    flat   ';
-      fixture.detectChanges();
-      expect(element).toHaveClass(`${pf}-icon-${ft}`);
-      expect(element).toHaveClass(`${pf}-flat-${ft}`);
-    });
+    it('Works with arrays', () => proceed(['icon', 'flat'], ['icon', 'flat']));
 
-    it('Works with malformed strings in arrays', () => {
-      component.mode = ['  icon  ', ' flat '];
-      fixture.detectChanges();
-      expect(element).toHaveClass(`${pf}-icon-${ft}`);
-      expect(element).toHaveClass(`${pf}-flat-${ft}`);
-    });
+    it('Works with malformed strings', () =>
+      proceed('  icon    flat   ', ['icon', 'flat']));
 
-    it('Works with composed strings in arrays', () => {
-      component.mode = ['icon flat'];
-      fixture.detectChanges();
-      expect(element).toHaveClass(`${pf}-icon-${ft}`);
-      expect(element).toHaveClass(`${pf}-flat-${ft}`);
-    });
+    it('Works with malformed strings in arrays', () =>
+      proceed(['  icon  ', ' flat '], ['icon', 'flat']));
 
-    it('Works with composed, malformed strings in arrays', () => {
-      component.mode = ['   icon  flat  '];
-      fixture.detectChanges();
-      expect(element).toHaveClass(`${pf}-icon-${ft}`);
-      expect(element).toHaveClass(`${pf}-flat-${ft}`);
-    });
+    it('Works with composed strings in arrays', () =>
+      proceed(['icon flat'], ['icon', 'flat']));
+
+    it('Works with composed, malformed strings in arrays', () =>
+      proceed(['   icon  flat  '], ['icon', 'flat']));
   });
 });
