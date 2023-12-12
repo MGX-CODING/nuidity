@@ -1,13 +1,11 @@
 import { Directive, HostBinding, Input } from '@angular/core';
-import { LIB_PREFIX, normalizeString } from '@mgxdev/nuidity/utils';
+import { normalizeString } from '@mgxdev/nuidity/utils';
 
-@Directive({ selector: '[nui-button]' })
+@Directive({
+  selector: '[nui-button]',
+  host: { '[class.nui-button]': 'true' },
+})
 export class NuiButtonDirective {
-  private static FEAT_NAME = 'button';
-
-  @HostBinding(`class.${LIB_PREFIX}-${NuiButtonDirective.FEAT_NAME}`)
-  baseClass = true;
-
   @Input({
     transform: (value: string | string[]) =>
       value
@@ -16,7 +14,7 @@ export class NuiButtonDirective {
             : normalizeString(value).split(' ')
           )
             .map((v) => normalizeString(v))
-            .map((cl) => `${LIB_PREFIX}-${cl}-${NuiButtonDirective.FEAT_NAME}`)
+            .map((cl) => `nui-${cl}-button`)
         : '',
   })
   @HostBinding('class')

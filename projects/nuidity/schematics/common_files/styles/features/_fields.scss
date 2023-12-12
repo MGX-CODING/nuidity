@@ -1,0 +1,37 @@
+@use "../vars";
+@use "../mixins";
+
+@mixin core {
+  // HTML element representing the nui-field
+  nui-field {}
+
+  // Field types : replace with the type of the input (text, password, etc) (duplicate it as much as needed)
+  .nui-TYPE-field {}
+
+  // The input element inside of the field
+  .nui-field-input {}
+
+  // The label element inside of the field
+  .nui-field-label {}
+
+  // The input in the field is pristine
+  nui-field.ng-pristine {}
+  // The input in the field is dirty
+  nui-field.ng-dirty {}
+  // The input in the field is touched
+  nui-field.ng-touched {}
+  // The input in the field is untouched
+  nui-field.ng-untouched {}
+  // The input in the field is valid
+  nui-field.ng-valid {}
+  // The input in the field is invalid
+  nui-field.ng-invalid {}
+  // The input in the field is pending (async validation)
+  nui-field.ng-pending {}
+  // The input in the field has the required validator
+  nui-field.ng-required {}
+  // The input in the field is checked (usually radios & buttons)
+  nui-field.ng-checked {}
+  // The input in the field is disabled
+  nui-field.ng-disabled {}
+}

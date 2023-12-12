@@ -143,19 +143,18 @@
             "outputPath": "dist/playground",
             "index": "projects/playground/src/index.html",
             "browser": "projects/playground/src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "projects/playground/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
               "projects/playground/src/favicon.ico",
               "projects/playground/src/assets"
             ],
-            "styles": [
-              "projects/playground/src/styles.scss"
-            ],
-            "scripts": []
+            "styles": ["projects/playground/src/styles.scss"],
+            "scripts": [],
+            "stylePreprocessorOptions": {
+              "includePaths": ["projects/playground/src/theming"]
+            }
           },
           "configurations": {
             "production": {
@@ -202,19 +201,14 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "projects/playground/tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
               "projects/playground/src/favicon.ico",
               "projects/playground/src/assets"
             ],
-            "styles": [
-              "projects/playground/src/styles.scss"
-            ],
+            "styles": ["projects/playground/src/styles.scss"],
             "scripts": []
           }
         }
