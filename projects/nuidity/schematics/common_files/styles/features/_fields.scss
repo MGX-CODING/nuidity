@@ -8,6 +8,9 @@
   // Field types : replace with the type of the input (text, password, etc) (duplicate it as much as needed)
   .nui-TYPE-field {}
 
+  // Container that holds all field errors
+  .nui-field-errors {}
+
   // Directive selector on field inputs
   [nui-input] {}
   // Directive selector on field labels
