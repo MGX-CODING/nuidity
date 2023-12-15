@@ -19,13 +19,22 @@ import { NuiFieldsModule } from "@mgxdev/nuidity/fields";
 </nui-field>
 ```
 
-### With text slots
+### With basic slots
+
+The library provides optional, basic slots that allow you show information to the user :
+
+- The prefix, which is usually before the input
+- The suffix, which is usually after the input
+- the label, which is usually used to describe the input
+  - The label gets bound to the input automatically (`for`/`id` combo)
+- The hint, which is usually used to give basic information about the input to the user
 
 ```html
 <nui-field>
   <span nui-prefix> 👍 </span>
   <span nui-suffix> 👎 </span>
   <label nui-label> Username </label>
+  <label nui-hint> Use a unique username </label>
 
   <input type="text" nui-input />
 </nui-field>
@@ -49,11 +58,9 @@ import { NuiFieldsModule } from "@mgxdev/nuidity/fields";
 </nui-field>
 ```
 
-## Features
+## Classes
 
-- Auto-binds the label and the input, so no need to add the `for` or `id` attributes (you can, just not required)
-- Handles CSS classes on the parent element, for easy styling ([see classes](/projects/nuidity/schematics/common_files/styles/features/_fields.scss))
--
+The field and its children provide [several classes](/projects/nuidity/schematics/common_files/styles/features/_fields.scss) for you to style them. 
 
 ## Caveats
 

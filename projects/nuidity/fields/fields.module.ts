@@ -6,6 +6,7 @@ import {
   NuiPrefixDirective,
   NuiSuffixDirective,
 } from './fixes/fixes.directives';
+import { NuiHintDirective } from './hint/hint.directive';
 import { NuiInputDirective } from './input/input.directive';
 import { NuiLabelDirective } from './label/label.directive';
 import { NuiTypeSwitchDirective } from './type-switch/type-switch.directive';
@@ -17,6 +18,7 @@ const feats = [
   NuiPrefixDirective,
   NuiSuffixDirective,
   NuiTypeSwitchDirective,
+  NuiHintDirective,
 ];
 
 @NgModule({

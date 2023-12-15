@@ -22,7 +22,7 @@ const helper = new TestableFeature(
   '[nui-type-switch]'
 );
 
-fdescribe('Field type switch directive', () => {
+describe('Field type switch directive', () => {
   helper.prepareTestBed();
   helper.isCreated();
 
