@@ -1,5 +1,5 @@
 import { ComponentType } from '@angular/cdk/overlay';
-import { Component, Type } from '@angular/core';
+import { Component, Provider, Type } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
@@ -32,6 +32,18 @@ export class TestableFeature<T, F> {
   /** Tests if the feature has a given class */
   hasClass(baseClass: string) {
     it('Has the base class', () => expect(this.element).toHaveClass(baseClass));
+  }
+
+  /** Returns an HTML element according to the provided selector */
+  getHtmlElement(selector: string): HTMLElement {
+    return this.fixture.debugElement.query(By.css(selector)).nativeElement;
+  }
+
+  /** Returns an array of HTML elements according to the provided selector */
+  getHtmlElements(selector: string): HTMLElement[] {
+    return this.fixture.debugElement
+      .queryAll(By.css(selector))
+      .map((v) => v.nativeElement);
   }
 
   /** Tests if the feature can change one of its attributes */
@@ -72,9 +84,10 @@ export class TestableFeature<T, F> {
 export function createTestingComponent<T>(
   template: string,
   imports: Type<any>[],
-  assignments: T
+  assignments: T,
+  providers: Provider[] = []
 ) {
-  @Component({ standalone: true, imports, template })
+  @Component({ standalone: true, imports, template, providers })
   class TestClass {
     constructor() {
       Object.assign(this, assignments);

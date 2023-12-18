@@ -20,6 +20,7 @@ module.exports = function (config) {
       clearContext: false,
     },
     jasmineHtmlReporter: { suppressAll: true },
+    mochaReporter: { ignoreSkipped: true },
     coverageReporter: {
       dir: require("path").join(__dirname, "../../coverage/nuidity"),
       subdir: ".",

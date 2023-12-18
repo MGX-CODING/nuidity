@@ -1,1 +1,1 @@
-export * from './transformers/strings';
+export { normalizeDate, normalizeString, compareDates } from './normalizers';

@@ -1,0 +1,23 @@
+@use "../vars";
+@use "../mixins";
+
+@mixin core {
+  // HTML element representing the nui-datepicker
+  nui-datepicker {}
+
+  // Year selector in the datepicker
+  .nui-datepicker-year-select {}
+  // Month selector in the datepicker
+  .nui-datepicker-month-select {}
+  // Date selector on the datepicker
+  .nui-datepicker-date-select {}
+  // Day names used as column titles in the calendar
+  .nui-datepicker-day-name {}
+
+  // Date button the user clicks to set the date
+  .nui-datepicker-calendar-date {}
+  // When a date is out of the month, but displayed to evenize the calendar
+  .nui-datepicker-date-out-of-month {}
+  // When a date is currently selected by the user
+  .nui-datepicker-date-selected {}
+}

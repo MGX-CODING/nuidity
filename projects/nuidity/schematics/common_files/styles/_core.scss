@@ -2,6 +2,8 @@
 @use "./mixins";
 
 @use "./features/buttons";
+@use "./features/fields";
+@use "./features/datepicker";
 
 @mixin applyTheme {
   /*
@@ -11,4 +13,6 @@
   */
 
   @include buttons.core;
+  @include fields.core;
+  @include datepicker.core;
 }

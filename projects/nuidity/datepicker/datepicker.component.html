@@ -1,0 +1,34 @@
+<div class="nui-datepicker-year-select">
+  <button nui-button [mode]="yearButtonsMode" (click)="changeYear(-1)">
+    &lt;
+  </button>
+  <span>{{ displayDate | date : 'yyyy' }}</span>
+  <button nui-button [mode]="yearButtonsMode" (click)="changeYear(+1)">
+    &gt;
+  </button>
+</div>
+
+<div class="nui-datepicker-month-select">
+  <button nui-button [mode]="monthButtonsMode" (click)="changeMonth(-1)">
+    &lt;
+  </button>
+  <span>{{ monthNames[displayDate.getMonth()] }}</span>
+  <button nui-button [mode]="monthButtonsMode" (click)="changeMonth(+1)">
+    &gt;
+  </button>
+</div>
+
+<div class="nui-datepicker-date-select">
+  @for (day of dayNames; track day) {
+  <span class="nui-datepicker-day-name">{{ day }}</span>
+  } @for (date of calendarDates; track date) {
+  <button
+    class="nui-datepicker-calendar-date"
+    [class.nui-datepicker-date-out-of-month]="!date.isIn"
+    [class.nui-datepicker-date-selected]="date.selected"
+    (click)="selectDate(date.date)"
+  >
+    {{ date.date | date : "dd" }}
+  </button>
+  }
+</div>
