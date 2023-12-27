@@ -1,0 +1,6 @@
+// Import core style from "nuidity" folder
+@use "core";
+
+// Add the theming style to the application
+// Hint : scope it to use multiple themes, or use CSS "@layer"s to control its specificity !
+@include core.applyTheme;

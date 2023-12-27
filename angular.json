@@ -158,7 +158,10 @@
               "projects/showcase/src/assets"
             ],
             "styles": ["projects/showcase/src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "stylePreprocessorOptions": {
+              "includePaths": ["projects/showcase/src/nuidity"]
+            }
           },
           "configurations": {
             "production": {
