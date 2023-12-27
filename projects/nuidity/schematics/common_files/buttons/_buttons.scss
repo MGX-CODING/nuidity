@@ -4,7 +4,4 @@
 @mixin core {
   // Directive selector on nuidity buttons
   [nui-button] {}
-
-  // Button modes : replace with your implemented modes (duplicate it as much as needed)
-  .nui-MODE-button {}
 }

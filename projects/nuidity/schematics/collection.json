@@ -5,6 +5,11 @@
       "description": "Add n-ui-dity to your project",
       "factory": "./ng-add/index",
       "schema": "./ng-add/schema.json"
+    },
+    "theme": {
+      "description": "Creates a publishable library for a n-ui-dity theme",
+      "factory": "./theme/index",
+      "schema": "./theme/schema.json"
     }
   }
 }

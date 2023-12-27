@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "NuidityThemeSchematic",
+  "title": "N-ui-dity theme schematic",
+  "description": "Creates a publishable library for a n-ui-dity theme",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "alias": "n",
+      "type": "string",
+      "description": "Name of the library",
+      "x-prompt": "What is the name of your library ?",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      }
+    }
+  },
+  "required": ["name"]
+}

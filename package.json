@@ -2,11 +2,7 @@
   "name": "nuidity",
   "version": "0.0.0",
   "scripts": {
-    "build:schematics": "npm run build --prefix projects/nuidity",
-    "compodoc:build": "compodoc -c projects/compodoc/compodoc.json",
-    "compodoc:serve": "compodoc -c projects/compodoc/compodoc.json -s -w",
-    "project:basic": "ng g app playground --routing -S --ssr --standalone false --strict --style scss",
-    "project:standalone": "ng g app playground-standalone --routing -S --ssr --standalone true --strict --style scss"
+    "build:schematics": "npm run build --prefix projects/nuidity"
   },
   "private": true,
   "dependencies": {
@@ -32,11 +28,9 @@
     "@angular-devkit/schematics-cli": "^17.0.6",
     "@angular/cli": "^17.0.6",
     "@angular/compiler-cli": "^17.0.0",
-    "@compodoc/compodoc": "^1.1.23",
     "@types/express": "^4.17.17",
     "@types/jasmine": "~5.1.0",
     "@types/node": "^18.18.0",
-    "copyfiles": "^2.4.1",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",

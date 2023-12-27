@@ -1,6 +1,6 @@
 import * as S from '../helpers';
 
-import { exit } from '../utils';
+import { createThemingFiles, exit } from '../utils';
 import { NgAddOptions } from './schema';
 
 export default function ngAddSchematic(options: NgAddOptions): S.Rule {
@@ -8,7 +8,7 @@ export default function ngAddSchematic(options: NgAddOptions): S.Rule {
     const workspace = await S.getWorkspace(tree);
     const project = S.getProjectFromWorkspace(workspace, options.project);
     const sourceRoot = project?.sourceRoot!;
-    const targetPath = sourceRoot + '/theming';
+    const targetPath = sourceRoot + '/nuidity';
 
     if (project.extensions['projectType'] !== S.ProjectType.Application)
       throw exit('Selected project is not an application.');
@@ -16,8 +16,7 @@ export default function ngAddSchematic(options: NgAddOptions): S.Rule {
     const operations: S.Rule[] = [];
 
     if (options.includeRawTheme) {
-      operations.push(S.mergeWith(addRawThemeFiles(targetPath)));
-      operations.push(S.mergeWith(addConfigModule(targetPath)));
+      operations.push(S.mergeWith(createThemingFiles(targetPath)));
       operations.push(updateAppConfig(project, options.project));
       operations.push(addStyles(options.project, targetPath));
     }
@@ -26,18 +25,6 @@ export default function ngAddSchematic(options: NgAddOptions): S.Rule {
   };
 }
 
-/** Add raw theme files to the given folder */
-function addRawThemeFiles(path: string): S.Source {
-  return S.apply(S.url('../common_files/styles'), [S.move(S.normalize(path))]);
-}
-
-/** Adds the library configuration module to the application */
-function addConfigModule(path: string) {
-  const file = '../common_files/configs';
-  return S.apply(S.url(file), [S.move(S.normalize(path))]);
-}
-
-/** Update workspace's style preprocessor options and project's global style sheet */
 function addStyles(projectName: string, path: string): S.Rule {
   return (tree, context) => {
     return S.updateWorkspace((workspace) => {
@@ -62,14 +49,13 @@ function addPreprocessor(
   if (!includePaths.includes(path)) includePaths.push(path);
 }
 
-/** Updates the application config (or module) to add the configuration module */
 function updateAppConfig(
   project: S.workspaces.ProjectDefinition,
   projectName: string
 ): S.Rule {
   return (tree, { logger }) => {
     const dir = S.normalize(project.sourceRoot + '/app');
-    const importPath = S.normalize('../theming/nuidity.config.module');
+    const importPath = S.normalize('../nuidity/nuidity.config.module');
     const modulePath = S.normalize(dir + '/app.module.ts');
     const configPath = S.normalize(dir + '/app.config.ts');
 
@@ -140,7 +126,7 @@ function updateStyleSheet(
 
   const useregex = /(@use(?![\s\S]*@use).*$)/gm;
   const inserted =
-    `// Import core style from "theming" folder\n` +
+    `// Import core style from "nuidity" folder\n` +
     `@use 'core';\n\n` +
     `// Add the theming style to the application\n` +
     `// Hint : scope it to use multiple themes, or use CSS "@layer"s to control its specificity !\n` +

@@ -23,8 +23,18 @@
         "message": "How would you like to theme your application ?",
         "type": "list",
         "items": [
-          { "label": "I will create my own theme", "value": true },
-          { "label": "I will use an existing theme", "value": false }
+          {
+            "label": "I will create my own theme for this application only",
+            "value": true
+          },
+          {
+            "label": "I will use an existing theme I have found on NPM",
+            "value": false
+          },
+          {
+            "label": "I will create my own theme and publish it on NPM",
+            "value": false
+          }
         ]
       }
     }

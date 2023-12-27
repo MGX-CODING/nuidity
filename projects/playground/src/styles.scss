@@ -1,8 +1,0 @@
-// Import core style from "theming" folder
-@use 'core';
-
-// Add the theming style to the application
-// Hint : scope it to use multiple themes, or use CSS "@layer"s to control its specificity !
-@include core.applyTheme;
-
-/* You can add global styles to this file, and also import other style files */

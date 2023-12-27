@@ -1,6 +1,8 @@
 export * from '@angular-devkit/schematics';
+export * from '@angular-devkit/schematics/tasks';
 export * from '@angular/cdk/schematics';
 export * from '@schematics/angular/utility';
+export * from '@schematics/angular/utility/dependencies';
 export * from '@schematics/angular/utility/workspace';
 export * from '@schematics/angular/utility/workspace-models';
 
