@@ -1,7 +1,0 @@
-@use "../vars";
-@use "../mixins";
-
-@mixin core {
-  // Directive selector on nuidity buttons
-  [nui-button] {}
-}
