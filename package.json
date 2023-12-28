@@ -2,7 +2,7 @@
   "name": "nuidity",
   "version": "0.0.0",
   "scripts": {
-    "build:schematics": "npm run build --prefix projects/nuidity"
+    "build:lib": "npm run build --prefix projects/nuidity"
   },
   "private": true,
   "dependencies": {

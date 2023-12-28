@@ -2,8 +2,11 @@
   "name": "@mgxdev/nuidity",
   "version": "0.0.1",
   "scripts": {
-    "build": "tsc -p tsconfig.schematics.json",
-    "postbuild": "node schematics/copy-files.js"
+    "build": "npm run build:lib",
+    "postbuild": "npm run build:schematics",
+    "build:lib": "ng build nuidity",
+    "build:schematics": "tsc -p tsconfig.schematics.json",
+    "postbuild:schematics": "node schematics/copy-files.js"
   },
   "peerDependencies": {
     "@angular/common": "^17.0.0",
