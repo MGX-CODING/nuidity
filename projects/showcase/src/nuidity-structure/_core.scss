@@ -1,0 +1,8 @@
+@use "./vars";
+@use "./mixins";
+
+@use "./features/overlays";
+
+@mixin applyTheme {
+  @include overlays.core;
+}

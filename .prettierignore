@@ -1,1 +1,1 @@
-projects/nuidity/schematics/common_files/styles/features
+projects/nuidity/schematics/common_files/**/*.scss

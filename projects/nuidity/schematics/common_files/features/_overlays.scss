@@ -1,0 +1,15 @@
+@use '../mixins';
+@use '../vars';
+
+@mixin core {
+  // Main container appended at the body
+  .cdk-overlay-container {}
+  // Backdrop
+  .cdk-overlay-backdrop {}
+  // Wrapper to place the dialog (using "display: flex" is advised)
+  .cdk-global-overlay-wrapper {}
+  // Panel that contains the dialog
+  .cdk-overlay-pane {}
+  // Wrapping component that displays the view you have provided
+  cdk-dialog-container.cdk-dialog-container {}
+}

@@ -160,7 +160,7 @@
             "styles": ["projects/showcase/src/styles.scss"],
             "scripts": [],
             "stylePreprocessorOptions": {
-              "includePaths": ["projects/showcase/src/nuidity"]
+              "includePaths": ["projects/showcase/src/nuidity-structure"]
             }
           },
           "configurations": {

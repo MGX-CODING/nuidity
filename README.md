@@ -4,9 +4,12 @@
 
 - [What is this library ?](#what-is-this-library)
 - [Quickstart](#quickstart)
-- [Library schematics](./documentation/schematics.md)
-  - [Adding the library to your project](./documentation/schematics.md#adding-the-library-to-your-project)
-  - [Creating a publishable theme](./documentation/schematics.md#creating-a-publishable-theme)
+- [N-ui-dity library](./projects/nuidity/README.md)
+  - [Features documentation](./projects/nuidity/README.md#features-documentation)
+  - [Library schematics](./projects/nuidity/README.md)
+    - [Adding the library to your project](./projects/nuidity/README.md#adding-the-library-to-your-project)
+    - [Creating a publishable theme](./projects/nuidity/README.md#creating-a-publishable-theme)
+  - [Providing global configurations](./projects/nuidity/README.md#providing-global-configurations)
 
 ## What is this library ?
 
@@ -36,6 +39,6 @@ cd my-project-name
 
 # ---
 
-npx ng add @mgxdev/nuidity -p my-project-name -t true
+npx ng add @mgxdev/nuidity -p my-project-name
 npx ng serve my-project-name
 ```

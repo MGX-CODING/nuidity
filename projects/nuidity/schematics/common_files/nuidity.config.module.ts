@@ -12,7 +12,7 @@ import {
  */
 
 // Put all of your configurations into this array
-const providers: (Provider | EnvironmentProviders)[] = [];
+const providers: Provider[] = [];
 
 // If you do not use a standalone application, import this module into your application module
 @NgModule({ providers })

@@ -2,10 +2,9 @@
 @use "./mixins";
 
 // Features imports : because they're partials, you do not need to delete them, even if you don't need them.
+@use './features/overlays';
 
 @mixin applyTheme {
-  /*
-    All features are imported here.
-    If you do not want to import some of them, feel free to comment / delete them !
-  */
+  // Actual feature inclusion into the CSS. If you do not use some of them, you can delete it.
+  @include overlays.core;
 }
