@@ -172,6 +172,12 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
+            },
+            "live": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "tsConfig": "projects/showcase/tsconfig.live.json"
             }
           },
           "defaultConfiguration": "production"
@@ -184,6 +190,9 @@
             },
             "development": {
               "buildTarget": "showcase:build:development"
+            },
+            "live": {
+              "buildTarget": "showcase:build:live"
             }
           },
           "defaultConfiguration": "development"
