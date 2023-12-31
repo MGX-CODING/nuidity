@@ -28,6 +28,17 @@ import { NUI_DIALOG_CONFIG } from "@mgxdev/nuidity/overlays";
 dialog(component: Component | TemplateRef, configuration: NuiDialogConfig);
 ```
 
+## Feature : dialog-closing directive
+
+When you're in a dialog component or template, you can use the `nui-dialog-close` helper directive to close the corresponding dialog.  
+If you provide no value to the directive, it returns `null` on the `ref.closed` observable.
+
+<!-- prettier-ignore -->
+```html
+<button nui-dialog-close>Cancel</button>
+<button [nui-dialog-close]="true">Confirm</button>
+```
+
 ## Feature : dialogs
 
 ### Configuration
